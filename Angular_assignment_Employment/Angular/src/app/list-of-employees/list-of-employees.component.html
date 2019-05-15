@@ -1,0 +1,126 @@
+<!-- <p>List Of Employees:</p>
+<div>
+  <input  type="text" placeholder="search" [(ngModel)]="searchText">
+</div><br>
+
+<table class="table">
+  
+  <thead><tr><th>Id</th><th>FullName</th><th>DateOfBirth</th><th>Email</th><th>Mobile</th><th>EmployeeType</th><th>HireDate</th></thead>
+  <tbody>
+  <tr *ngFor="let employee of listOfEmployees| filter:searchText | paginate:{itemsPerPage:5,currentPage:p}">
+    <td>{{employee.Id}}</td><td>{{employee.FullName}}</td><td>{{employee.DateOfBirth}}</td><td>{{employee.Email}}</td><td>{{employee.Mobile}}</td><td>{{employee.EmployeeType}}</td><td>{{employee.HireDate}}</td>
+  </tr>
+</tbody>
+<pagination-controls (pageChange)="changePage($event)"></pagination-controls> -->
+<div class="list-of-employees-container">
+  <div class="list-container">
+<div class="search-div">
+  <button mat-raised-button (click)="onCreateEmployee()" matTooltip="Create Employee"><mat-icon>add</mat-icon>{{'listofemployees-create-button'|translate}}</button>
+  <mat-form-field class="search-form-field" floatLabel="never">
+    <input matInput placeholder="{{'listofemployees-search-input'|translate}}" [(ngModel)]="searchKey" autocomplete="off" (keyup)="applyFilter($event.target.value)">
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
+      <mat-icon>close</mat-icon>
+  </button>
+  </mat-form-field>
+
+
+</div>
+
+<div class="table-container mat-elevation-z8">
+<table mat-table [dataSource]="listofEmployeesDataSource"  matSort>
+
+  
+  <!-- checkbox column-->
+  <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()"
+                    [aria-label]="checkboxLabel()">
+      </mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)"
+                    [aria-label]="checkboxLabel(row)">
+      </mat-checkbox>
+    </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="employeeBasicDetails.fullName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'listofemployees.column.fullname'|translate}}</th>
+    <td mat-cell *matCellDef="let element"> {{element.employeeBasicDetails.fullName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="employeeBasicDetails.dateOfBirth">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'listofemployees.column.dateofbirth'|translate}}</th>
+    <td mat-cell *matCellDef="let element"> {{element.employeeBasicDetails.dateOfBirth | date:'MM/dd/yyyy'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="employeeBasicDetails.email">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'listofemployees.column.email'|translate}}</th>
+    <td mat-cell *matCellDef="let element"> {{element.employeeBasicDetails.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="employeeBasicDetails.mobile">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'listofemployees.column.mobile'|translate}}</th>
+    <td mat-cell *matCellDef="let element"> {{element.employeeBasicDetails.mobile}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="employeeBasicDetails.employeeType">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'listofemployees.column.employeetype'|translate}}</th>
+    <td mat-cell *matCellDef="let element"> {{element.employeeBasicDetails.employeeType}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="employeeMoreDetails.hireDate">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'listofemployees.column.hiredate'|translate}}</th>
+    <td mat-cell *matCellDef="let element"> {{element.employeeMoreDetails.hireDate | date:'MM/dd/yyyy'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="employeeMoreDetails.gender">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'listofemployees.column.gender'|translate}}</th>
+    <td mat-cell *matCellDef="let element"> {{element.employeeMoreDetails.gender}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="employeeMoreDetails.department">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'listofemployees.column.department'|translate}}</th>
+    <td mat-cell *matCellDef="let element"> {{element.employeeMoreDetails.department}} </td>
+  </ng-container>
+
+  <!-- <ng-container matColumnDef="employeeMoreDetails.address">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
+    <td mat-cell *matCellDef="let element"> {{element.employeeMoreDetails.address}} </td>
+  </ng-container> -->
+
+  <ng-container matColumnDef="employeeMoreDetails.maritalStatus">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'listofemployees.column.maritalstatus'|translate}}</th>
+    <td mat-cell *matCellDef="let element"> {{element.employeeMoreDetails.maritalStatus === true? "Married":"Unmarried"}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let row">
+<button mat-icon-button (click)="onEditEmployee(row)"  matTooltip="edit"><mat-icon>edit</mat-icon></button>
+<button mat-icon-button color="warn" (click)="onDeleteEmployee(row)"  matTooltip="delete"><mat-icon>delete</mat-icon></button>
+    </td>
+  </ng-container>
+
+
+
+  <tr mat-header-row *matHeaderRowDef="displayColumns; sticky: true"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+</table>
+</div>
+<mat-paginator [pageSizeOptions]=[5,10,25,100] [pageSize]="5" showFirstLastButtons></mat-paginator>
+<div class="delete-employees">
+  <button mat-raised-button color="warn" (click)="onDeleteMultipleEmployees()" matTooltip="delete selected"><mat-icon>delete_outline</mat-icon>{{'listofemployees.button.deleteemployees'|translate}}</button>
+</div>
+</div>
+</div>
+  

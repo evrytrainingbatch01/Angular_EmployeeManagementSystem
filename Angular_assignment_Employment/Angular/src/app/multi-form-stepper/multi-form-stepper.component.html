@@ -1,0 +1,30 @@
+<div class="stepper-container">
+  <div class="toolbar-container">
+<mat-toolbar>
+  <span>{{employee_id!==""?employeeEditForm:employeeForm}}</span>
+  <span class="fill-remaining-space"></span>
+  <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>close</mat-icon></button>
+</mat-toolbar>
+</div>
+<div class="stepper">
+<mat-horizontal-stepper #stepper>
+  <mat-step>
+      <ng-template matStepLabel>{{'step-one-title'|translate}}</ng-template>
+      <div  class="first-form">
+    <app-form-step-one></app-form-step-one>
+  </div>
+    
+  </mat-step>
+  <mat-step>
+      <ng-template matStepLabel>{{'step-two-title'|translate}}</ng-template>
+      <app-form-step-two></app-form-step-two>
+  </mat-step>   
+  <mat-step>
+    <ng-template matStepLabel>{{'step-three-title'|translate}}</ng-template>
+    <app-final-form></app-final-form>
+  </mat-step>
+</mat-horizontal-stepper>
+</div>
+</div>
+
+

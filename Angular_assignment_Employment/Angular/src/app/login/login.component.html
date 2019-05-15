@@ -1,0 +1,26 @@
+<div class="login-container">
+  <div class="form-container">
+    <!-- <button class="close-button"><mat-icon>close</mat-icon></button> -->
+    <form [formGroup]="loginForm">
+<mat-form-field>
+  <input  type="text"  formControlName="email" matInput placeholder="{{'loginform.email'|translate}}">
+  <mat-error *ngIf="loginForm.controls['email'].errors?.required">{{'loginform.email.error.required'|translate}}</mat-error>
+  <mat-error *ngIf="loginForm.controls['email'].errors?.email">{{'loginform.email.error.pattern'|translate}}</mat-error>
+  
+</mat-form-field><br>
+<mat-form-field>
+  <input type="password"  formControlName="password" matInput placeholder="{{'loginform.password'|translate}}">
+  <mat-error  *ngIf="loginForm.controls['password'].errors?.required">{{'loginform.password.error.required'|translate}}</mat-error>
+  
+</mat-form-field>
+<div class="button-row">
+  <button mat-raised-button color="primary" (click)="loginVerify()">{{'loginform.login.button'|translate}}</button>
+  <button mat-raised-button color="warn" (click)="loginForm.reset()">{{'loginform.clear.button'|translate}}</button>
+
+  
+
+</div><br>
+<p  id="status" class="status-style"></p>
+</form>
+</div>
+</div>

@@ -1,0 +1,86 @@
+<mat-card><form [formGroup]="stepTwoForm" class="normal-form">
+<mat-grid-list cols="2" rowHeight="350px">
+    <mat-grid-tile>
+        
+            <!-- <ng-template matStepLabel>Fill out more Details</ng-template> -->
+        <div  class="controles-container">
+          <mat-form-field>
+            <input [max]="maxDate" formControlName="hireDate" matInput [matDatepicker]="picker" placeholder="{{'second.form.hiredate.placeholder'|translate}}">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <!-- <mat-hint>Acceptable format is mm/dd/yyyy</mat-hint> -->
+            <mat-hint>{{'first.form.datepicker.hint'|translate}} mm/dd/yyyy</mat-hint>
+            <mat-error *ngIf="stepTwoForm.controls['hireDate'].errors?.required">{{'step2.hiredate.error.required'|translate}}</mat-error>
+          </mat-form-field><br><br>
+          <div class="add-bottom-padding">
+              <mat-label>{{'second.form.gender'|translate}}</mat-label>
+            <mat-radio-group formControlName="gender">
+              <mat-radio-button value="Male">{{'second.form.gender.option1'|translate}}</mat-radio-button>
+              <mat-radio-button value="Female">{{'second.form.gender.option2'|translate}}</mat-radio-button>
+              <mat-radio-button value="Other">{{'second.form.gender.option3'|translate}}</mat-radio-button>
+            </mat-radio-group>
+           
+          </div>
+
+          <mat-form-field>
+            <mat-select formControlName="department" placeholder="{{'second.form.department.placeholder'|translate}}">
+              <mat-option value=''>{{'step2.department.none'|translate}}</mat-option>
+              <ng-container *ngFor="let dept of departments">
+                <mat-option value="{{dept.value}}">{{dept.value}}</mat-option>
+              </ng-container>
+              
+  
+            </mat-select>
+            <!-- <mat-error *ngIf="stepTwoForm.controls['department'].errors?.required">select any one of the department</mat-error> -->
+            <mat-error >{{'step2.department.error.required'|translate}}</mat-error>
+          </mat-form-field>
+
+           <!-- <mat-form-field>
+            <textarea matInput placeholder="Address*" formControlName="address"></textarea>
+            <mat-error *ngIf="stepTwoForm.controls['address'].errors?.required">address is required</mat-error>
+          </mat-form-field>  -->
+          
+
+         <!-- <mat-form-field>
+          <mat-select formControlName="jobLocation" placeholder="Job Locaton">
+            <mat-option value=''>None</mat-option>
+            <ng-container *ngFor="let location of locations">
+              <mat-option value="{{location}}">{{location}}</mat-option>
+            </ng-container>
+            
+
+          </mat-select>
+          
+        </mat-form-field> -->
+
+         
+        </div>
+      
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div  class="controles-container">
+
+        <div class="add-bottom-padding">
+            <mat-label>Marital Status :</mat-label><br><br>
+              <section class="example-section">
+                  <mat-label>Married ? </mat-label>
+            <mat-checkbox  class="example-margin"  formControlName="maritalStatus" name="maritalStatus"></mat-checkbox><br>
+                  </section>
+           </div>
+
+           <div class="button-row">
+              <button mat-raised-button matStepperPrevious  color="accent">{{'second.form.back.button'|translate}}</button>
+              <button mat-raised-button type="submit" color="warn" (click)="formReset()">{{'second.form.clear.button'|translate}}</button>
+              <button mat-raised-button matStepperNext color="primary" [disabled]="stepTwoForm.invalid" (click)="initializeForm3()">{{'second.form.next.button'|translate}}</button>
+           
+  
+            </div>
+          </div>
+    </mat-grid-tile>
+  
+
+    
+
+  </mat-grid-list>
+</form>
+</mat-card>

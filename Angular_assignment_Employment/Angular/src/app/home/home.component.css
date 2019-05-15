@@ -1,0 +1,37 @@
+/* mat-grid-tile {
+    background: lightblue;
+  }
+  
+  .mat-grid-tile .mat-grid-tile-footer {
+    bottom: 0px;
+    height: 92px;
+}
+.mat-grid-tile .mat-grid-tile-header {
+    top: 0px;
+    height: 65px;
+} */
+
+.home-container{
+  width:1241px;
+  height: 597px;
+  margin:0px auto;
+   background-color: pink;
+}
+.header-container{
+  width:1241px;
+  height: 60px;
+  background-color: green; 
+}
+.router-container{
+  width:1241px;
+  height:500px;
+   background-color: burlywood;
+}
+.footer-container{
+  width:1241px;
+  height:37px;
+   background-color: darkslategrey;
+   text-align: center;
+}
+
+  

@@ -1,0 +1,100 @@
+<mat-card><form [formGroup]="service.form3" class="normal-form">
+<mat-grid-list cols="2" rowHeight="500px">
+    <mat-grid-tile>
+        
+        <div  class="controles-container">
+            <mat-label><h6>{{'final.form.submit.hint'|translate}}:</h6></mat-label>
+          <mat-form-field>
+            <input formControlName="fullName"  matInput placeholder="{{'first.form.fullname.placeholder'|translate}}*">
+            <mat-error>FullName is required</mat-error> 
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="{{'first.form.dateofbirth.placeholder'|translate}}" formControlName="dateOfBirth">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field>
+              <input formControlName="email"  matInput placeholder="{{'first.form.email.placeholder'|translate}}"> 
+              <mat-error>Please enter a valid email</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="mobile"  matInput placeholder="{{'first.form.mobile.placeholder'|translate}}*"> 
+                <mat-error *ngIf="service.form3.controls['mobile'].errors?.required">Mobile no is required</mat-error>
+                <mat-error *ngIf="service.form3.controls['mobile'].errors?.minlength">Mobile no should have 10 digits</mat-error>
+              </mat-form-field>
+              <div class="add-bottom-padding">
+              <label id="example-radio-group-label">{{'first.form.employeetype.placeholder'|translate}}:</label><br>
+          <mat-radio-group formControlName="employeeType">
+            <mat-radio-button class="example-radio-button" *ngFor="let empType of empTypes" [value]="empType">
+              {{empType}}
+            </mat-radio-button>
+          </mat-radio-group>
+          </div>
+
+          <!-- <div>
+              <button mat-button matStepperNext color="primary">Next</button>
+              <button mat-button (click)="stepper.reset()" color="primary">Reset</button>
+            </div> -->
+
+            
+        </div>
+     
+    </mat-grid-tile>
+  <mat-grid-tile>
+     <div  class="controles-container">
+        <mat-form-field>
+          <input formControlName="hireDate" matInput [matDatepicker]="picker1" placeholder="{{'second.form.hiredate.placeholder'|translate}}">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field><br><br>
+        <div class="add-bottom-padding">
+            <mat-label>{{'second.form.gender'|translate}}</mat-label>
+          <mat-radio-group formControlName="gender">
+            <mat-radio-button value="Male">{{'second.form.gender.option1'|translate}}</mat-radio-button>
+            <mat-radio-button value="Female">{{'second.form.gender.option2'|translate}}</mat-radio-button>
+            <mat-radio-button value="Other">{{'second.form.gender.option3'|translate}}</mat-radio-button>
+          </mat-radio-group>
+         
+        </div>
+
+        <mat-form-field>
+          <mat-select formControlName="department" placeholder="{{'second.form.department.placeholder'|translate}}">
+            <mat-option>None</mat-option>
+            <ng-container *ngFor="let dept of departments">
+              <mat-option value="{{dept.value}}">{{dept.value}}</mat-option>
+            </ng-container>
+
+          </mat-select>
+        </mat-form-field>
+
+        <!-- <mat-form-field>
+          <textarea matInput placeholder="Address" formControlName="address"></textarea>
+        </mat-form-field> -->
+        <!-- <div class="add-bottom-padding">
+        <mat-label>{{'second.form.jobLocation'|translate}}:</mat-label>
+          <section class="example-section" *ngFor="let location of locations" >
+        <mat-checkbox  class="example-margin"  value={{location}} formControlName="jobLocation">{{location}}</mat-checkbox><br>
+              </section>
+       </div> -->
+
+       <div class="add-bottom-padding">
+          <mat-label>Marital Status :</mat-label><br><br>
+            <section class="example-section">
+                <mat-label>Married ? </mat-label>
+          <mat-checkbox  class="example-margin"  formControlName="maritalStatus" name="maritalStatus"></mat-checkbox><br>
+                </section>
+         </div>
+
+
+       <div class="button-row">
+          <button mat-raised-button matStepperPrevious color="accent">{{'second.form.back.button'|translate}}</button>
+          <button mat-raised-button type="submit" color="primary" (click)="addEmployee()">{{'final.form.submit.button'|translate}}</button>
+
+        </div>
+      </div>
+   
+  </mat-grid-tile>
+</mat-grid-list>
+</form>
+</mat-card>
+

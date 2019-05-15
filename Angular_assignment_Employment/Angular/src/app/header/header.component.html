@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="# ">{{'app-title'|translate}}</a>
+
+  <!-- Links -->
+  <ul class="navbar-nav" style="margin-left:35%">
+
+   <li class="select"> <select (change)="switchLanguage($event.target.value)">
+      <option>{{'language-selection'|translate}}</option>
+      <option value="en" >{{'option1'|translate}}</option>
+      <option value="sv" >{{'option2'|translate}}</option>
+      
+    </select>
+  </li>
+
+    <li class="nav-item">
+      <a class="nav-link" routerLink="">{{'home-button'|translate}}</a>
+    </li>
+    <li class="nav-item" *ngIf="loginButton">
+      <a class="nav-link" routerLink="/login-form">{{'login.button'|translate}}</a>
+    </li>
+
+    <!-- <li class="nav-item">
+      <a class="nav-link" href="/multi-form">AddEmployee</a>
+    </li> -->
+    <li class="nav-item" *ngIf="employeeListButton">
+        <a class="nav-link" routerLink="/listofemployees">{{'listofemployees-button'|translate}}</a>
+      </li>
+      <li class="nav-item" *ngIf="logoutButton">
+        <a class="nav-link" routerLink="/login-form">{{'logout.button'|translate}}</a>
+      </li>
+
+    
+  </ul>
+</nav>
+
+  
+
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+
+<mat-card><form [formGroup]="stepOneForm" class="normal-form">
+  
+<mat-grid-list cols="2" rowHeight="300px">
+    <mat-grid-tile>
+        
+        <div  class="controles-container">
+          <mat-form-field>
+            <input formControlName="fullName"  matInput placeholder="{{'first.form.fullname.placeholder'|translate}}*">
+            <mat-error *ngIf="stepOneForm.controls['fullName'].errors?.required">{{'step1.fullname.error.required'|translate}}</mat-error>
+            <mat-error *ngIf="stepOneForm.controls['fullName'].errors?.maxlength">{{'step1.fullname.error.maxlength'|translate}}</mat-error> 
+            <mat-error *ngIf="stepOneForm.controls['fullName'].errors?.pattern">{{'step1.fullname.error.pattern'|translate}}</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput [max]="service.maxDate" [matDatepicker]="picker" placeholder="{{'first.form.dateofbirth.placeholder'|translate}}" formControlName="dateOfBirth">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-hint>{{'first.form.datepicker.hint'|translate}} mm/dd/yyyy</mat-hint>
+            <mat-error *ngIf="stepOneForm.controls['dateOfBirth'].errors?.required">{{'step1.dateofbirth.error.required'|translate}}</mat-error>
+            <!-- <mat-error *ngIf="stepOneForm.controls['dateOfBirth'].errors?.pattern">please enter date of birth in mm/dd/yyyy format</mat-error> -->
+          </mat-form-field>
+          <mat-form-field>
+              <input formControlName="email"  matInput placeholder="{{'first.form.email.placeholder'|translate}}*">
+              <mat-error *ngIf="stepOneForm.controls['email'].errors?.required">{{'step1.email.error.required'|translate}}</mat-error> 
+              <mat-error *ngIf="stepOneForm.controls['email'].errors?.email">{{'step1.email.error.pattern'|translate}}</mat-error>
+            </mat-form-field>
+            
+          </div>
+
+          <!-- <div>
+              <button mat-button matStepperNext color="primary">Next</button>
+              <button mat-button (click)="stepper.reset()" color="primary">Reset</button>
+            </div> -->
+
+            
+       
+      
+      
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div  class="controles-container">
+        <mat-form-field>
+            <input formControlName="mobile"  appDigitOnly matInput placeholder="{{'first.form.mobile.placeholder'|translate}}*"> 
+            <mat-error *ngIf="stepOneForm.controls['mobile'].errors?.required">{{'step1.mobile.error.required'|translate}}</mat-error>
+            <mat-error *ngIf="stepOneForm.controls['mobile'].errors?.minlength">{{'step1.mobile.error.minlength'|translate}}</mat-error>
+            <mat-error *ngIf="stepOneForm.controls['mobile'].errors?.maxlength">{{'step1.mobile.error.maxlength'|translate}}</mat-error>
+            <!-- <mat-error *ngIf="stepOneForm.controls['mobile'].errors?.pattern">mobile number should not contain any characters</mat-error> -->
+          </mat-form-field>
+          <div class="add-bottom-padding">
+          <label id="example-radio-group-label">{{'first.form.employeetype.placeholder'|translate}}* :</label><br>
+      <mat-radio-group formControlName="employeeType">
+        <mat-radio-button class="example-radio-button" *ngFor="let empType of empTypes" [value]="empType">
+          {{empType}}
+        </mat-radio-button>
+        
+      </mat-radio-group>
+    </div>
+
+      <div class="button-row">
+          <button mat-raised-button matStepperNext color="primary" [disabled]="stepOneForm.invalid">{{'first.form.next.button'|translate}}</button>
+          <button mat-raised-button type="submit" color="warn" (click)="formReset()">{{'first.form.clear.button'|translate}}</button>
+          
+
+        </div>
+      </div>
+    </mat-grid-tile>
+  
+
+    
+
+  </mat-grid-list>
+
+</form>
+</mat-card>

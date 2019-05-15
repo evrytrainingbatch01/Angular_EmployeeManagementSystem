@@ -1,0 +1,26 @@
+table {
+    width: 100%;
+  }
+  .table-container{
+      height:320px;
+      /* overflow-x: scroll; */
+      background-color: white;
+      overflow: scroll;
+  }
+  .search-div{
+      height:40px;
+  }
+
+  .delete-employees{
+      text-align: right;
+      /* margin-right: 15px; */
+      
+  }
+  .list-of-employees-container{
+      width:1200px;
+      padding-left:50px;
+      padding-top:5px;
+  }
+  .delete-employees{
+      padding-top:10px;
+  }
