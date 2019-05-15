@@ -1,0 +1,51 @@
+
+mysql> use angular_db;
+Database changed
+mysql>
+mysql> select * from employees;
++-------------+---------------------+------------------------+---------------+----------------+------------+-------------+--------+---------------------+----------------+
+| employee_id | date_of_birth       | email                  | employee_type | full_name      | mobile_no  | department  | gender | hire_date           | marital_status |
++-------------+---------------------+------------------------+---------------+----------------+------------+-------------+--------+---------------------+----------------+
+|           1 | 2017-11-16 05:30:00 | srinivas567n@gmail.com | Permanent     | Srinvasa Rao   | 8904117233 | Development | Male   | 2018-11-09 05:30:00 |               |
+|           2 | 2018-07-05 05:30:00 | manoj@gmail.com        | Permanent     | Manoj          | 8234509876 | Testing     | Male   | 2018-11-02 05:30:00 |               |
+|           3 | 2018-03-09 05:30:00 | deepak@ymail.com       | Contract      | Deepak         | 9871234766 | Production  | Male   | 2016-08-05 05:30:00 |               |
+|           4 | 2018-06-08 05:30:00 | chinna@gmail.com       | Contract      | Chinna         | 9871234509 | Testing     | Male   | 2018-10-05 05:30:00 |               |
+|           5 | 2018-06-15 05:30:00 | shadiq@gmail.com       | Contract      | Shadiq         | 9871234598 | Production  | Male   | 2017-12-08 05:30:00 |               |
+|           6 | 2017-08-11 05:30:00 | swaroop@gmail.com      | Contract      | Swaroop        | 7812348768 | Testing     | Male   | 2018-08-10 05:30:00 |                |
+|           7 | 2016-08-05 05:30:00 | anju@gmail.com         | Contract      | Anju           | 8769745392 | Testing     | Female | 2018-07-06 05:30:00 |                |
+|           8 | 2017-06-23 05:30:00 | parvathi@gmail.com     | Permanent     | Parvathi       | 7892272626 | Production  | Female | 2016-07-08 05:30:00 |               |
+|           9 | 2017-02-17 05:30:00 | janshi@ymail.com       | Permanent     | Jhanshi        | 9871234765 | Production  | Female | 2019-01-04 05:30:00 |                |
+|          10 | 2017-07-07 05:30:00 | sonal@kmail.com        | Permanent     | Sonal chowdary | 8761235438 | Testing     | Female | 2018-09-07 05:30:00 |                |
+|          12 | 2018-10-26 05:30:00 | bhanu@gmail.com        | Contract      | Bhanu          | 9871234676 | Testing     | Female | 2019-01-11 05:30:00 |               |
++-------------+---------------------+------------------------+---------------+----------------+------------+-------------+--------+---------------------+----------------+
+11 rows in set (0.02 sec)
+
+mysql>
+
+******************************************************
+
+
+mysql> use angular_db;
+Database changed
+mysql>
+mysql> select * from employees;
++-------------+---------------------+------------------------+---------------+----------------+------------+-------------+--------+---------------------+----------------+
+| employee_id | date_of_birth       | email                  | employee_type | full_name      | mobile_no  | department  | gender | hire_date           | marital_status |
++-------------+---------------------+------------------------+---------------+----------------+------------+-------------+--------+---------------------+----------------+
+|           1 | 2017-11-16 05:30:00 | srinivas567n@gmail.com | Permanent     | Srinvasa Rao   | 8904117233 | Development | Male   | 2018-11-09 05:30:00 |               |
+|           2 | 2018-07-05 05:30:00 | manoj@gmail.com        | Permanent     | Manoj          | 8234509876 | Testing     | Male   | 2018-11-02 05:30:00 |               |
+|           3 | 2018-03-09 05:30:00 | deepak@ymail.com       | Contract      | Deepak         | 9871234766 | Production  | Male   | 2016-08-05 05:30:00 |               |
+|           4 | 2018-06-08 05:30:00 | chinna@gmail.com       | Contract      | Chinna         | 9871234509 | Testing     | Male   | 2018-10-05 05:30:00 |               |
+|           5 | 2018-06-15 05:30:00 | shadiq@gmail.com       | Contract      | Shadiq         | 9871234598 | Production  | Male   | 2017-12-08 05:30:00 |               |
+|           6 | 2017-08-11 05:30:00 | swaroop@gmail.com      | Contract      | Swaroop        | 7812348768 | Testing     | Male   | 2018-08-10 05:30:00 |                |
+|           7 | 2016-08-05 05:30:00 | anju@gmail.com         | Contract      | Anju           | 8769745392 | Testing     | Female | 2018-07-06 05:30:00 |                |
+|           8 | 2017-06-23 05:30:00 | parvathi@gmail.com     | Permanent     | Parvathi       | 7892272626 | Production  | Female | 2016-07-08 05:30:00 |               |
+|           9 | 2017-02-17 05:30:00 | janshi@ymail.com       | Permanent     | Jhanshi        | 9871234765 | Production  | Female | 2019-01-04 05:30:00 |                |
+|          10 | 2017-07-07 05:30:00 | sonal@kmail.com        | Permanent     | Sonal chowdary | 8761235438 | Testing     | Female | 2018-09-07 05:30:00 |                |
+|          12 | 2018-10-26 05:30:00 | bhanu@gmail.com        | Contract      | Bhanu          | 9871234676 | Testing     | Female | 2019-01-11 05:30:00 |               |
++-------------+---------------------+------------------------+---------------+----------------+------------+-------------+--------+---------------------+----------------+
+11 rows in set (0.02 sec)
+
+mysql>
+
+
